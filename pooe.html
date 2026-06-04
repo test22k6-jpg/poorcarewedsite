@@ -1,0 +1,612 @@
+\<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pooch Care</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff;
+    color:#333;
+    transition:.4s;
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:white;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    z-index:1000;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:bold;
+    color:#22a35a;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#22a35a;
+}
+
+.dark-btn{
+    cursor:pointer;
+    font-size:22px;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1600");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    padding:0 10%;
+}
+
+.hero-content{
+    max-width:700px;
+    color:white;
+}
+
+.hero h1{
+    font-size:65px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:8px;
+    text-decoration:none;
+    margin-right:15px;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#22a35a;
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#188048;
+}
+
+.btn-outline{
+    border:2px solid white;
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:black;
+}
+
+/* SECTION */
+section{
+    padding:90px 10%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:40px;
+    color:#22a35a;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    margin:15px 0;
+    color:#22a35a;
+}
+
+/* PRODUCTS */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.product{
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.product img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.product:hover img{
+    transform:scale(1.08);
+}
+
+.product-info{
+    padding:20px;
+}
+
+.price{
+    color:#22a35a;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* TESTIMONIAL */
+.testimonial{
+    background:#f5f5f5;
+}
+
+.review-box{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+}
+
+.review-box p{
+    font-size:20px;
+    font-style:italic;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+/* LOGIN REGISTER */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.form-box{
+    background:white;
+    width:400px;
+    max-width:90%;
+    padding:30px;
+    border-radius:15px;
+    position:relative;
+}
+
+.form-box h2{
+    text-align:center;
+    color:#22a35a;
+    margin-bottom:20px;
+}
+
+.form-box input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.form-box button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#22a35a;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.form-box button:hover{
+    background:#188048;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.form-box p{
+    text-align:center;
+    margin-top:15px;
+}
+
+.form-box a{
+    color:#22a35a;
+    text-decoration:none;
+}
+
+/* DARK MODE */
+.dark{
+    background:#111;
+    color:white;
+}
+
+.dark header{
+    background:#1d1d1d;
+}
+
+.dark nav a{
+    color:white;
+}
+
+.dark .card,
+.dark .product,
+.dark .form-box{
+    background:#222;
+    color:white;
+}
+
+.dark .testimonial{
+    background:#1d1d1d;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    gap:15px;
+}
+
+nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.hero{
+    text-align:center;
+}
+
+.hero h1{
+    font-size:36px;
+}
+
+.hero p{
+    font-size:18px;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Pooch Care</div>
+
+```
+<nav>
+    <ul>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="#services">Dịch vụ</a></li>
+        <li><a href="#products">Sản phẩm</a></li>
+        <li><a href="#" onclick="openLogin()">Đăng nhập</a></li>
+    </ul>
+</nav>
+
+<div class="dark-btn" id="darkBtn" onclick="toggleDark()">🌙</div>
+```
+
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Những điều chất lượng dành cho thú cưng yêu thương</h1>
+
+```
+    <p>
+        Chăm sóc thú cưng với tình yêu, sự tận tâm và dịch vụ chuyên nghiệp.
+    </p>
+
+    <a href="#services" class="btn btn-primary">Xem thêm</a>
+    <a href="#" class="btn btn-outline">Liên hệ</a>
+</div>
+```
+
+</section>
+
+<section id="services">
+
+```
+<div class="section-title">
+    <h2>Dịch Vụ Của Chúng Tôi</h2>
+</div>
+
+<div class="services">
+
+    <div class="card">
+        <h3>🐶 Chăm Sóc Thú Cưng</h3>
+        <p>Tắm rửa, vệ sinh và chăm sóc toàn diện.</p>
+    </div>
+
+    <div class="card">
+        <h3>✂️ Cắt Tỉa Lông</h3>
+        <p>Dịch vụ grooming chuyên nghiệp.</p>
+    </div>
+
+    <div class="card">
+        <h3>🏥 Khám Sức Khỏe</h3>
+        <p>Đội ngũ bác sĩ thú y giàu kinh nghiệm.</p>
+    </div>
+
+    <div class="card">
+        <h3>🛒 Phụ Kiện</h3>
+        <p>Thức ăn và đồ chơi chất lượng cao.</p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section id="products">
+
+```
+<div class="section-title">
+    <h2>Sản Phẩm Nổi Bật</h2>
+</div>
+
+<div class="products">
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800">
+        <div class="product-info">
+            <h3>Thức ăn cho chó</h3>
+            <p>Dinh dưỡng đầy đủ cho thú cưng.</p>
+            <div class="price">299.000đ</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=800">
+        <div class="product-info">
+            <h3>Đồ chơi thú cưng</h3>
+            <p>An toàn và bền đẹp.</p>
+            <div class="price">149.000đ</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800">
+        <div class="product-info">
+            <h3>Vòng cổ cao cấp</h3>
+            <p>Thiết kế hiện đại và chắc chắn.</p>
+            <div class="price">199.000đ</div>
+        </div>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section class="testimonial">
+
+```
+<div class="section-title">
+    <h2>Khách Hàng Nói Gì?</h2>
+</div>
+
+<div class="review-box">
+    <p>
+        "Dịch vụ rất tuyệt vời, nhân viên thân thiện và thú cưng của tôi luôn được chăm sóc tốt nhất!"
+    </p>
+
+    <br>
+
+    <h3>- Anh TÔI BÌNH TĨNH</h3>
+</div>
+```
+
+</section>
+
+<footer>
+    <h3>Pooch Care © <span id="year"></span></h3>
+    <p>Bán Thú cưng bằng cả trái tim ❤️</p>
+</footer>
+
+<div class="modal" id="loginModal">
+
+```
+<div class="form-box">
+
+    <span class="close" onclick="closeLogin()">×</span>
+
+    <div id="loginForm">
+
+        <h2>Đăng Nhập</h2>
+
+        <input type="text" id="loginUser" placeholder="Tên đăng nhập">
+
+        <input type="password" id="loginPass" placeholder="Mật khẩu">
+
+        <button onclick="login()">Đăng nhập</button>
+
+        <p>
+            Chưa có tài khoản?
+            <a href="#" onclick="showRegister()">Đăng ký</a>
+        </p>
+
+    </div>
+
+    <div id="registerForm" style="display:none;">
+
+        <h2>Đăng Ký</h2>
+
+        <input type="text" id="regUser" placeholder="Tên đăng nhập">
+
+        <input type="email" id="regEmail" placeholder="Email">
+
+        <input type="password" id="regPass" placeholder="Mật khẩu">
+
+        <button onclick="register()">Đăng ký</button>
+
+        <p>
+            Đã có tài khoản?
+            <a href="#" onclick="showLogin()">Đăng nhập</a>
+        </p>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+function toggleDark(){
+
+    document.body.classList.toggle("dark");
+
+    const btn = document.getElementById("darkBtn");
+
+    if(document.body.classList.contains("dark")){
+        btn.innerHTML="☀️";
+    }else{
+        btn.innerHTML="🌙";
+    }
+}
+
+function openLogin(){
+    document.getElementById("loginModal").style.display="flex";
+}
+
+function closeLogin(){
+    document.getElementById("loginModal").style.display="none";
+}
+
+function showRegister(){
+    document.getElementById("loginForm").style.display="none";
+    document.getElementById("registerForm").style.display="block";
+}
+
+function showLogin(){
+    document.getElementById("registerForm").style.display="none";
+    document.getElementById("loginForm").style.display="block";
+}
+
+function register(){
+
+    let user=document.getElementById("regUser").value;
+    let email=document.getElementById("regEmail").value;
+    let pass=document.getElementById("regPass").value;
+
+    if(user==="" || email==="" || pass===""){
+        alert("Vui lòng nhập đầy đủ thông tin!");
+        return;
+    }
+
+    localStorage.setItem("user",user);
+    localStorage.setItem("email",email);
+    localStorage.setItem("pass",pass);
+
+    alert("Đăng ký thành công!");
+    showLogin();
+}
+
+function login(){
+
+    let user=document.getElementById("loginUser").value;
+    let pass=document.getElementById("loginPass").value;
+
+    let savedUser=localStorage.getItem("user");
+    let savedPass=localStorage.getItem("pass");
+
+    if(user===savedUser && pass===savedPass){
+
+        alert("Đăng nhập thành công!");
+
+        document.querySelector("nav ul li:last-child a").innerHTML =
+        "Xin chào, " + user;
+
+        closeLogin();
+
+    }else{
+
+        alert("Sai tài khoản hoặc mật khẩu!");
+
+    }
+}
+</script>
+
+</body>
+</html>
