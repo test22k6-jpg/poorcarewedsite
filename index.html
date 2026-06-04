@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="vi">
-<head> 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pooch Care</title>
@@ -66,22 +65,41 @@ nav a:hover{
     font-size:22px;
 }
 
-/* HERO */
+/* HERO WITH VIDEO BACKGROUND */
 .hero{
+    position: relative;
     height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-    url("https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1600");
-    background-size:cover;
-    background-position:center;
     display:flex;
     align-items:center;
     padding:0 10%;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
 }
 
 .hero-content{
+    position: relative;
     max-width:700px;
     color:white;
+    z-index: 3;
 }
 
 .hero h1{
@@ -316,229 +334,159 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:768px){
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
 
-header{
-    flex-direction:column;
-    gap:15px;
-}
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
 
-nav ul{
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-}
+    .hero{
+        text-align:center;
+    }
 
-.hero{
-    text-align:center;
-}
+    .hero h1{
+        font-size:36px;
+    }
 
-.hero h1{
-    font-size:36px;
-}
-
-.hero p{
-    font-size:18px;
-}
+    .hero p{
+        font-size:18px;
+    }
 }
 </style>
-
 </head>
-
 <body>
 
 <header>
     <div class="logo">Pooch Care</div>
-
-```
-<nav>
-    <ul>
-        <li><a href="#">Trang chủ</a></li>
-        <li><a href="#services">Dịch vụ</a></li>
-        <li><a href="#products">Sản phẩm</a></li>
-        <li><a href="#" onclick="openLogin()">Đăng nhập</a></li>
-    </ul>
-</nav>
-
-<div class="dark-btn" id="darkBtn" onclick="toggleDark()">🌙</div>
-```
-
+    <nav>
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#services">Dịch vụ</a></li>
+            <li><a href="#products">Sản phẩm</a></li>
+            <li><a href="#" onclick="openLogin()">Đăng nhập</a></li>
+        </ul>
+    </nav>
+    <div class="dark-btn" id="darkBtn" onclick="toggleDark()">🌙</div>
 </header>
 
 <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="intro.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ thẻ video.
+    </video>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>Những điều chất lượng dành cho thú cưng yêu thương</h1>
-
-```
-    <p>
-        Chăm sóc thú cưng với tình yêu, sự tận tâm và dịch vụ chuyên nghiệp.
-    </p>
-
-    <a href="#services" class="btn btn-primary">Xem thêm</a>
-    <a href="#" class="btn btn-outline">Liên hệ</a>
-</div>
-```
-
+        <p>Chăm sóc thú cưng với tình yêu, sự tận tâm và dịch vụ chuyên nghiệp.</p>
+        <a href="#services" class="btn btn-primary">Xem thêm</a>
+        <a href="#" class="btn btn-outline">Liên hệ</a>
+    </div>
 </section>
 
 <section id="services">
-
-```
-<div class="section-title">
-    <h2>Dịch Vụ Của Chúng Tôi</h2>
-</div>
-
-<div class="services">
-
-    <div class="card">
-        <h3>🐶 Chăm Sóc Thú Cưng</h3>
-        <p>Tắm rửa, vệ sinh và chăm sóc toàn diện.</p>
+    <div class="section-title">
+        <h2>Dịch Vụ Của Chúng Tôi</h2>
     </div>
-
-    <div class="card">
-        <h3>✂️ Cắt Tỉa Lông</h3>
-        <p>Dịch vụ grooming chuyên nghiệp.</p>
+    <div class="services">
+        <div class="card">
+            <h3>🐶 Chăm Sóc Thú Cưng</h3>
+            <p>Tắm rửa, vệ sinh và chăm sóc toàn diện.</p>
+        </div>
+        <div class="card">
+            <h3>✂️ Cắt Tỉa Lông</h3>
+            <p>Dịch vụ grooming chuyên nghiệp.</p>
+        </div>
+        <div class="card">
+            <h3>🏥 Khám Sức Khỏe</h3>
+            <p>Đội ngũ bác sĩ thú y giàu kinh nghiệm.</p>
+        </div>
+        <div class="card">
+            <h3>🛒 Phụ Kiện</h3>
+            <p>Thức ăn và đồ chơi chất lượng cao.</p>
+        </div>
     </div>
-
-    <div class="card">
-        <h3>🏥 Khám Sức Khỏe</h3>
-        <p>Đội ngũ bác sĩ thú y giàu kinh nghiệm.</p>
-    </div>
-
-    <div class="card">
-        <h3>🛒 Phụ Kiện</h3>
-        <p>Thức ăn và đồ chơi chất lượng cao.</p>
-    </div>
-
-</div>
-```
-
 </section>
 
 <section id="products">
-
-```
-<div class="section-title">
-    <h2>Sản Phẩm Nổi Bật</h2>
-</div>
-
-<div class="products">
-
-    <div class="product">
-        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800">
-        <div class="product-info">
-            <h3>Thức ăn cho chó</h3>
-            <p>Dinh dưỡng đầy đủ cho thú cưng.</p>
-            <div class="price">299.000đ</div>
+    <div class="section-title">
+        <h2>Sản Phẩm Nổi Bật</h2>
+    </div>
+    <div class="products">
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800">
+            <div class="product-info">
+                <h3>Thức ăn cho chó</h3>
+                <p>Dinh dưỡng đầy đủ cho thú cưng.</p>
+                <div class="price">299.000đ</div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=800">
+            <div class="product-info">
+                <h3>Đồ chơi thú cưng</h3>
+                <p>An toàn và bền đẹp.</p>
+                <div class="price">149.000đ</div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800">
+            <div class="product-info">
+                <h3>Vòng cổ cao cấp</h3>
+                <p>Thiết kế hiện đại và chắc chắn.</p>
+                <div class="price">199.000đ</div>
+            </div>
         </div>
     </div>
-
-    <div class="product">
-        <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=800">
-        <div class="product-info">
-            <h3>Đồ chơi thú cưng</h3>
-            <p>An toàn và bền đẹp.</p>
-            <div class="price">149.000đ</div>
-        </div>
-    </div>
-
-    <div class="product">
-        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800">
-        <div class="product-info">
-            <h3>Vòng cổ cao cấp</h3>
-            <p>Thiết kế hiện đại và chắc chắn.</p>
-            <div class="price">199.000đ</div>
-        </div>
-    </div>
-
-</div>
-```
-
 </section>
 
 <section class="testimonial">
-
-```
-<div class="section-title">
-    <h2>Khách Hàng Nói Gì?</h2>
-</div>
-
-<div class="review-box">
-    <p>
-        "Dịch vụ rất tuyệt vời, nhân viên thân thiện và thú cưng của tôi luôn được chăm sóc tốt nhất!"
-    </p>
-
-    <br>
-
-    <h3>- Anh TÔI BÌNH TĨNH</h3>
-</div>
-```
-
+    <div class="section-title">
+        <h2>Khách Hàng Nói Gì?</h2>
+    </div>
+    <div class="review-box">
+        <p>"Dịch vụ rất tuyệt vời, nhân viên thân thiện và thú cưng của tôi luôn được chăm sóc tốt nhất!"</p>
+        <br>
+        <h3>- Anh TÔI BÌNH TĨNH</h3>
+    </div>
 </section>
 
 <footer>
     <h3>Pooch Care © <span id="year"></span></h3>
-    <p>Bán Thú cưng bằng cả trái tim ❤️</p>
+    <p>Chăm sóc Thú cưng bằng cả trái tim ❤️</p>
 </footer>
 
 <div class="modal" id="loginModal">
-
-```
-<div class="form-box">
-
-    <span class="close" onclick="closeLogin()">×</span>
-
-    <div id="loginForm">
-
-        <h2>Đăng Nhập</h2>
-
-        <input type="text" id="loginUser" placeholder="Tên đăng nhập">
-
-        <input type="password" id="loginPass" placeholder="Mật khẩu">
-
-        <button onclick="login()">Đăng nhập</button>
-
-        <p>
-            Chưa có tài khoản?
-            <a href="#" onclick="showRegister()">Đăng ký</a>
-        </p>
-
+    <div class="form-box">
+        <span class="close" onclick="closeLogin()">×</span>
+        <div id="loginForm">
+            <h2>Đăng Nhập</h2>
+            <input type="text" id="loginUser" placeholder="Tên đăng nhập">
+            <input type="password" id="loginPass" placeholder="Mật khẩu">
+            <button onclick="login()">Đăng nhập</button>
+            <p>Chưa có tài khoản? <a href="#" onclick="showRegister()">Đăng ký</a></p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <h2>Đăng Ký</h2>
+            <input type="text" id="regUser" placeholder="Tên đăng nhập">
+            <input type="email" id="regEmail" placeholder="Email">
+            <input type="password" id="regPass" placeholder="Mật khẩu">
+            <button onclick="register()">Đăng ký</button>
+            <p>Đã có tài khoản? <a href="#" onclick="showLogin()">Đăng nhập</a></p>
+        </div>
     </div>
-
-    <div id="registerForm" style="display:none;">
-
-        <h2>Đăng Ký</h2>
-
-        <input type="text" id="regUser" placeholder="Tên đăng nhập">
-
-        <input type="email" id="regEmail" placeholder="Email">
-
-        <input type="password" id="regPass" placeholder="Mật khẩu">
-
-        <button onclick="register()">Đăng ký</button>
-
-        <p>
-            Đã có tài khoản?
-            <a href="#" onclick="showLogin()">Đăng nhập</a>
-        </p>
-
-    </div>
-
-</div>
-```
-
 </div>
 
 <script>
-
-document.getElementById("year").textContent =
-new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 
 function toggleDark(){
-
     document.body.classList.toggle("dark");
-
     const btn = document.getElementById("darkBtn");
-
     if(document.body.classList.contains("dark")){
         btn.innerHTML="☀️";
     }else{
@@ -565,48 +513,33 @@ function showLogin(){
 }
 
 function register(){
-
     let user=document.getElementById("regUser").value;
     let email=document.getElementById("regEmail").value;
     let pass=document.getElementById("regPass").value;
-
     if(user==="" || email==="" || pass===""){
         alert("Vui lòng nhập đầy đủ thông tin!");
         return;
     }
-
     localStorage.setItem("user",user);
     localStorage.setItem("email",email);
     localStorage.setItem("pass",pass);
-
     alert("Đăng ký thành công!");
     showLogin();
 }
 
 function login(){
-
     let user=document.getElementById("loginUser").value;
     let pass=document.getElementById("loginPass").value;
-
     let savedUser=localStorage.getItem("user");
     let savedPass=localStorage.getItem("pass");
-
     if(user===savedUser && pass===savedPass){
-
         alert("Đăng nhập thành công!");
-
-        document.querySelector("nav ul li:last-child a").innerHTML =
-        "Xin chào, " + user;
-
+        document.querySelector("nav ul li:last-child a").innerHTML = "Xin chào, " + user;
         closeLogin();
-
     }else{
-
         alert("Sai tài khoản hoặc mật khẩu!");
-
     }
 }
 </script>
-
 </body>
 </html>
